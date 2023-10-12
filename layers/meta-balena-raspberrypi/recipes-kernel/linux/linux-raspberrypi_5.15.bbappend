@@ -33,6 +33,13 @@ SRC_URI:append:rt-rpi-300 = " \
 	file://rt-rpi-Add-ch-432t-driver-for-this-chip.patch \
 "
 
+# Chipsee device specific devicetree overlay patch
+SRC_URI:append:chipsee-ppc-cm4 = " \
+    file://0001-Add-devicetree-patch-for-cs-i2c0.patch \
+    file://0001-Add-devicetree-patch-for-gt9xx.patch \
+    file://0001-Add-dts-overlay-for-pwm-backlight.patch \
+"
+
 # BalenaOS already disables gcc plugins,
 # however the unipi-neuron adds an extra module
 # which seems to override the default configuration

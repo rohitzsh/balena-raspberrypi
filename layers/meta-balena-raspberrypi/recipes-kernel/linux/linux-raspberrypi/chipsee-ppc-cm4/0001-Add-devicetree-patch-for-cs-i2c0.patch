@@ -1,0 +1,123 @@
+From 5ac60c3fae92700ca4b25acae8b382bfc6816d92 Mon Sep 17 00:00:00 2001
+From: Rohit Sharma <rohit.sharma@r2p.com>
+Date: Thu, 12 Oct 2023 11:36:20 +0100
+Subject: [PATCH] Add devicetree patch for cs-i2c0
+
+---
+ arch/arm/boot/dts/overlays/Makefile           |  1 +
+ .../arm/boot/dts/overlays/cs-i2c0-overlay.dts | 90 +++++++++++++++++++
+ 2 files changed, 91 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/cs-i2c0-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index bb9f5bf9d43a..2325c4d9f788 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -43,6 +43,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	cma.dtbo \
+ 	crystalfontz-cfa050_pi_m.dtbo \
+ 	cutiepi-panel.dtbo \
++	cs-i2c0.dtbo \
+ 	dacberry400.dtbo \
+ 	dht11.dtbo \
+ 	dionaudio-kiwi.dtbo \
+diff --git a/arch/arm/boot/dts/overlays/cs-i2c0-overlay.dts b/arch/arm/boot/dts/overlays/cs-i2c0-overlay.dts
+new file mode 100644
+index 000000000000..6c934dc6860b
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/cs-i2c0-overlay.dts
+@@ -0,0 +1,90 @@
++/dts-v1/;
++/plugin/;
++
++/{
++	compatible = "brcm,bcm2835";
++
++	fragment@0 {
++		target = <&i2c0if>;
++		__overlay__ {
++			status = "okay";
++			pinctrl-0 = <&i2c0_pins>;
++		};
++	};
++
++	fragment@1 {
++		target = <&i2c0_pins>;
++		pins1: __overlay__ {
++			brcm,pins = <0 1>;
++			brcm,function = <4>; /* alt0 */
++		};
++	};
++
++	fragment@2 {
++		target = <&i2c0_pins>;
++		pins2: __dormant__ {
++			brcm,pins = <28 29>;
++			brcm,function = <4>; /* alt0 */
++		};
++	};
++
++	fragment@3 {
++		target = <&i2c0_pins>;
++		pins3: __dormant__ {
++			brcm,pins = <44 45>;
++			brcm,function = <5>; /* alt1 */
++		};
++	};
++
++	fragment@4 {
++		target = <&i2c0_pins>;
++		pins4: __dormant__ {
++			brcm,pins = <46 47>;
++			brcm,function = <4>; /* alt0 */
++		};
++	};
++
++	fragment@5 {
++		target = <&i2c0>;
++		__dormant__ {
++			compatible = "brcm,bcm2708-i2c";
++		};
++	};
++
++	fragment@6 {
++		target = <&i2c0mux>;
++		__overlay__ {
++			status = "disabled";
++		};
++	};
++
++	fragment@7 {
++		target-path = "/aliases";
++		__overlay__ {
++			i2c0 = "/soc/i2c@7e205000";
++		};
++	};
++
++	fragment@8 {
++		target = <&i2c0if>;
++		__overlay__ {
++		#address-cells = <1>; /* needed to avoid dtc warning */
++		#size-cells = <0>; /* needed to avoid dtc warning */
++		status = "okay";
++			// CS_LCD
++			cs_lcd@32 {
++				compatible = "chipsee,cs_lcd";
++				reg = <0x32>;
++				status = "okay";
++			};
++		};
++	};
++
++	__overrides__ {
++		pins_0_1   = <0>,"+1-2-3-4";
++		pins_28_29 = <0>,"-1+2-3-4";
++		pins_44_45 = <0>,"-1-2+3-4";
++		pins_46_47 = <0>,"-1-2-3+4";
++		combine = <0>, "!5";
++	};
++};
+\ No newline at end of file
+-- 
+2.42.0
+
