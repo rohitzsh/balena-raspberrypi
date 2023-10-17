@@ -3,8 +3,8 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 
 module.exports =
 	version: 1
-	slug: 'chipsee-ppc-cm4'
-	aliases: [ 'chipsee-ppc-cm4' ]
+	slug: 'raspberrypicm4-ioboard'
+	aliases: [ 'raspberrypicm4-ioboard' ]
 	name: 'Chipsee PPC-CM4'
 	arch: 'aarch64'
 	state: 'released'
