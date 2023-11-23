@@ -85,3 +85,29 @@ EOF
 # usable if ENABLE_UART = 1. On OS development images, we want serial console
 # available, production devices can enable it with a configuration variable.
 ENABLE_UART ?= "${@bb.utils.contains('DISTRO_FEATURES','osdev-image','1','0',d)}"
+
+do_deploy:append:chipsee-ppc-cm4() {
+	cat << EOF > ${DEPLOYDIR}/bootfiles/config.txt
+arm_boost=1
+core_freq=250
+disable_overscan=1
+display_auto_detect=1
+hdmi_drive=2
+hdmi_force_hotplug=1
+hdmi_group=2
+hdmi_ignore_edid=0xa5000080
+hdmi_mode=87
+hdmi_timings=1024 0 160 10 160 600 0 12 1 23 0 0 0 60 0 52000000 6
+disable_splash=1
+dtoverlay=vc4-kms-v3d
+dtoverlay=pwm-backlight,pin=18,func=2,pwm_0
+dtoverlay=i2c0,pins_44_45
+dtoverlay=gt9xx,interrupt=20,reset=21
+gpio=6=op,dh
+gpio=18=op,dh
+gpio=496-499=ip
+gpu_mem=256
+avoid_warnings=1
+enable_uart=1
+EOF
+}
