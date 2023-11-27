@@ -98,6 +98,7 @@ hdmi_group=2
 hdmi_ignore_edid=0xa5000080
 hdmi_mode=87
 hdmi_timings=1024 0 160 10 160 600 0 12 1 23 0 0 0 60 0 52000000 6
+hdmi_pixel_encoding=4
 disable_splash=1
 dtoverlay=vc4-kms-v3d
 dtoverlay=pwm-backlight,pin=18,func=2,pwm_0
