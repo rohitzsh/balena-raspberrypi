@@ -6,3 +6,6 @@ CMDLINE += " ${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"console=tty1 
 CMDLINE += " cgroup_enable=memory"
 CMDLINE:remove = "root=/dev/mmcblk0p2"
 CMDLINE_DEBUG = ""
+
+# Chipsee
+CMDLINE:chipsee-ppc-cm4 = "dwc_otg.lpm_enable=0 rootfstype=ext4 rootwait dwc_otg.lpm_enable=0 rootwait vt.global_cursor_default=0 console=ttyAMA0,115200 cgroup_enable=memory"

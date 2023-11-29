@@ -1,17 +1,17 @@
-From 2b5b113179551739b7f38ac7981f473c81e61935 Mon Sep 17 00:00:00 2001
+From 39f9bdd3f4fa6c38e4a98bee0c5fe47948963e20 Mon Sep 17 00:00:00 2001
 From: rohit <rohit.sharma@r2p.com>
 Date: Wed, 29 Nov 2023 12:27:00 +0000
 Subject: [PATCH] Add support for loading bitmap image in u-boot
 
 ---
- configs/rpi_arm64_defconfig | 4 ++++
- 1 file changed, 4 insertions(+)
+ configs/rpi_arm64_defconfig | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
 diff --git a/configs/rpi_arm64_defconfig b/configs/rpi_arm64_defconfig
-index f90107e548..a6dacdf1cb 100644
+index f90107e548..954072cebb 100644
 --- a/configs/rpi_arm64_defconfig
 +++ b/configs/rpi_arm64_defconfig
-@@ -45,6 +45,10 @@ CONFIG_USB_KEYBOARD=y
+@@ -45,6 +45,17 @@ CONFIG_USB_KEYBOARD=y
  CONFIG_USB_HOST_ETHER=y
  CONFIG_USB_ETHER_LAN78XX=y
  CONFIG_USB_ETHER_SMSC95XX=y
@@ -19,6 +19,13 @@ index f90107e548..a6dacdf1cb 100644
 +CONFIG_BMP_16BPP=y
 +CONFIG_BMP_24BPP=y
 +CONFIG_BMP_32BPP=y
++CONFIG_SPLASH_SCREEN=y
++CONFIG_SPLASH_SCREEN_ALIGN=y
++CONFIG_SPLASH_SOURCE=y
++CONFIG_VIDEO=y
++CONFIG_CFB_CONSOLE=y
++CONFIG_VIDEO_SW_CURSOR=y
++CONFIG_VIDEO_LOGO=y
  CONFIG_DM_VIDEO=y
  # CONFIG_VIDEO_BPP8 is not set
  # CONFIG_VIDEO_BPP16 is not set
