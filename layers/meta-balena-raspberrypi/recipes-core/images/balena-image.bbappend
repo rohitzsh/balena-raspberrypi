@@ -80,11 +80,3 @@ IMAGE_INSTALL:append:raspberrypi4-superhub = " \
 "
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/images:"
-
-SRC_URI += " \
-    file://splash.bmp \
-"
-
-do_deploy:append () {
-    install -m 0644 ${WORKDIR}/splash.bmp ${IMAGE_ROOTFS}/boot/
-}
