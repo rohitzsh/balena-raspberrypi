@@ -101,6 +101,7 @@ dtoverlay=miniuart-bt
 dtoverlay=uart2
 dtoverlay=uart3
 dtoverlay=uart5
+dtoverlay=dwc2,dr_mode=host
 gpio=6=op,dh
 gpio=18=op,dh
 gpio=496-499=ip
