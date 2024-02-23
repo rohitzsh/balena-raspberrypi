@@ -1,0 +1,27 @@
+From f68af9d7f11452124618f6e866e6d909ba3d6fb3 Mon Sep 17 00:00:00 2001
+From: rohit <rohit.sharma@r2p.com>
+Date: Fri, 23 Feb 2024 15:37:57 +0000
+Subject: [PATCH] enable debug log
+
+---
+ include/common.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/include/common.h b/include/common.h
+index 71df59bca0..1e24f6c124 100644
+--- a/include/common.h
++++ b/include/common.h
+@@ -12,6 +12,10 @@
+ #ifndef __COMMON_H_
+ #define __COMMON_H_	1
+ 
++#ifndef DEBUG
++#define DEBUG
++#endif
++
+ #ifndef __ASSEMBLY__		/* put C only stuff in this section */
+ #include <config.h>
+ #include <errno.h>
+-- 
+2.43.0
+
