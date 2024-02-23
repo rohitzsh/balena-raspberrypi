@@ -22,6 +22,7 @@ RPI_PATCHES = " \
 
 SRC_URI += " \
     file://0001-Integrate-machine-independent-resin-environment-conf.patch \
+    file://0001-Add-support-for-loading-bitmap-image-in-u-boot.patch \
     ${RPI_PATCHES} \
 "
 
