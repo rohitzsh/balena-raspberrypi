@@ -1,0 +1,99 @@
+From 25b0f40dc24b355d5a2d26fee8d19c03ae4deffb Mon Sep 17 00:00:00 2001
+From: rohit <rohit.sharma@r2p.com>
+Date: Mon, 26 Feb 2024 14:39:13 +0000
+Subject: [PATCH] support linux logo
+
+---
+ configs/rpi_arm64_defconfig |   1 +
+ include/configs/rpi.h       |   3 +++
+ tools/logos/rpi.bmp         | Bin 0 -> 28494 bytes
+ 3 files changed, 4 insertions(+)
+ create mode 100644 tools/logos/rpi.bmp
+
+diff --git a/configs/rpi_arm64_defconfig b/configs/rpi_arm64_defconfig
+index 954072cebb..4ec93f504e 100644
+--- a/configs/rpi_arm64_defconfig
++++ b/configs/rpi_arm64_defconfig
+@@ -56,6 +56,7 @@ CONFIG_VIDEO=y
+ CONFIG_CFB_CONSOLE=y
+ CONFIG_VIDEO_SW_CURSOR=y
+ CONFIG_VIDEO_LOGO=y
++CONFIG_VIDEO_BMP_LOGO
+ CONFIG_DM_VIDEO=y
+ # CONFIG_VIDEO_BPP8 is not set
+ # CONFIG_VIDEO_BPP16 is not set
+diff --git a/include/configs/rpi.h b/include/configs/rpi.h
+index 522b41c02d..27d65d386d 100644
+--- a/include/configs/rpi.h
++++ b/include/configs/rpi.h
+@@ -66,6 +66,9 @@
+ #define CONFIG_BCM2835_GPIO
+ /* LCD */
+ #define CONFIG_LCD_DT_SIMPLEFB
++#define CONFIG_VIDEO_LOGO
++#define CONFIG_VIDEO_BMP_LOGO
++#define CONFIG_SPLASH_SCREEN_ALIGN
+ #define CONFIG_VIDEO_BCM2835
+ 
+ /* DFU over USB/UDC */
+diff --git a/tools/logos/rpi.bmp b/tools/logos/rpi.bmp
+new file mode 100644
+index 0000000000000000000000000000000000000000..0dcdb097930fa7c77f5af18d05f34547479bfe4c
+GIT binary patch
+literal 28494
+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
+M^|t-KyM{#n2lE7a8UO$Q
+
+literal 0
+HcmV?d00001
+
+-- 
+2.43.0
+
