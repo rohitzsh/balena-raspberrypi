@@ -60,3 +60,9 @@ BALENA_UBOOT_DEVICE_TYPES:append:raspberrypicm4-ioboard = " nvme"
 SRC_URI:append:raspberrypi4-64 = " \
     file://pi4-fix-crash-when-issuing-usb-reset.patch \
 "
+
+SRC_URI += "file://rpi.bmp"
+
+do_unpack:append() {
+    os.system("cp ${S}/rpi.bmp ${WORKDIR}/git/tools/logos/")
+}
