@@ -15,7 +15,6 @@ RPI_PATCHES = " \
     file://rpi4-include-configs-Use-config-defaults.patch \
     file://rpi-Use-CONFIG_OF_BOARD-instead-of-CONFIG_EMBED.patch \
     file://increase-usb-interface-nr.patch \
-    file://0002-raspberrypi-Disable-simple-framebuffer-support.patch \
     file://0001-avoid-block-uart-write.patch \
     file://u-boot-Remove-usb-start-from-CONFIG_PREBOOT.patch \
 "
