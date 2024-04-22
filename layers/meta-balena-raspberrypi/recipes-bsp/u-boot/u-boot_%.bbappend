@@ -23,7 +23,6 @@ RPI_PATCHES = " \
 SRC_URI += " \
     file://0001-Integrate-machine-independent-resin-environment-conf.patch \
     file://0001-Add-support-for-loading-bitmap-image-in-u-boot.patch \
-    file://0001-enable-debug-log.patch \
     file://0001-support-linux-logo.patch \
     ${RPI_PATCHES} \
 "
@@ -61,7 +60,7 @@ SRC_URI:append:raspberrypi4-64 = " \
     file://pi4-fix-crash-when-issuing-usb-reset.patch \
 "
 
-SRC_URI += "file://rpi.bmp"
+SRC_URI += " file://rpi.bmp "
 
 do_unpack:append() {
     os.system("cp ${S}/rpi.bmp ${WORKDIR}/git/tools/logos/")
